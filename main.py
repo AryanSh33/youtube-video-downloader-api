@@ -1,9 +1,7 @@
 from flask import Flask, request, jsonify
 from pytube import YouTube
 import re
-
 app = Flask(__name__)
-
 def download_video(url, resolution):
     try:
         yt = YouTube(url)
@@ -53,7 +51,6 @@ def download_by_resolution(resolution):
         return jsonify({"message": f"Video with resolution {resolution} downloaded successfully."}), 200
     else:
         return jsonify({"error": error_message}), 500
-
 @app.route('/video_info', methods=['POST'])
 def video_info():
     data = request.get_json()
